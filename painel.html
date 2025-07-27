@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Painel XSS</title>
+  <style>
+    body { font-family: monospace; background: #111; color: #0f0; padding: 20px; }
+    pre { white-space: pre-wrap; background: #222; padding: 10px; border: 1px solid #333; }
+  </style>
+</head>
+<body>
+  <h1>Painel de Coletas XSS</h1>
+  <div id="logs"></div>
+
+  <script>
+    async function carregar() {
+      const res = await fetch('/dados');
+      const json = await res.json();
+      const logs = document.getElementById('logs');
+      logs.innerHTML = '';
+
+      json.reverse().forEach((item, i) => {
+        const div = document.createElement('div');
+        div.innerHTML = `<pre>${JSON.stringify(item, null, 2)}</pre><hr>`;
+        logs.appendChild(div);
+      });
+    }
+
+    setInterval(carregar, 3000);
+    carregar();
+  </script>
+</body>
+</html>
