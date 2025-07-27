@@ -1,6 +1,6 @@
 (function () {
   const send = (dados) => {
-    fetch('https://SEU_DOMINIO.com/coletor', {
+    fetch('https://alanvxn2.onrender.com/coletor', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dados)
