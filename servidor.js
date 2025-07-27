@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const app = express();
@@ -6,6 +7,7 @@ const PORT = 3000;
 
 let registros = [];
 
+app.use(cors()); // <- CORS habilitado
 app.use(express.json());
 
 app.post('/coletor', (req, res) => {
